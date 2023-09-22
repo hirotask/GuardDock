@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: .
+      args:
+        - JAR_FILE=backend/build/libs/*.jar
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=testUser
+      - POSTGRES_PASSWORD=testPassword
+      - POSTGRES_URL=jdbc:postgresql://db:5432/test
+  db:
+    image: postgres:14
+    ports:
+      - 15432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data
+      # - ./init/sql:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=testUser
+      - POSTGRES_PASSWORD=testPassword
+      - POSTGRES_DB=test
+volumes:
+  db-store:
