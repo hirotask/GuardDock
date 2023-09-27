@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-spring",
+            "type": "shell",
+            "command": "./backend/gradlew build -x test",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "run-spring",
+            "type": "shell",
+            "command": "./backend/gradlew bootRun"
+        },
+        {
+            "label": "test-spring",
+            "type": "shell",
+            "command": "./backend/gradlew test"
+        }
+    ]
+}
