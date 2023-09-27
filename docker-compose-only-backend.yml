@@ -3,10 +3,10 @@ version: '3'
 services:
   backend:
     build:
-      context: backend
-      dockerfile: .
+      context: ./backend
+      dockerfile: ./Dockerfile
       args:
-        - JAR_FILE=backend/build/libs/*.jar
+        - JAR_FILE=build/libs/*.jar
     ports:
       - 8080:8080
     depends_on:
